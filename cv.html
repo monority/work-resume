@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Ronan Chenu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Palette moderne */
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-bg: #eef2ff;
+
+            /* Neutres */
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+
+            /* Font */
+            --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            font-size: 8.5pt;
+            line-height: 1.45;
+            color: var(--text);
+            background: #e5e7eb;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========================================
+           PAGE A4
+           ======================================== */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 18mm 20mm;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========================================
+           HEADER
+           ======================================== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 14pt;
+            padding-bottom: 12pt;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6pt;
+        }
+
+        .header-top {
+            display: flex;
+            gap: 10pt;
+            align-items: flex-start;
+        }
+
+        .avatar-placeholder {
+            width: 50pt;
+            height: 50pt;
+            background: var(--accent-bg);
+            border-radius: 8pt;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--accent);
+            flex-shrink: 0;
+        }
+
+        .avatar-placeholder span {
+            font-size: 7pt;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .name-info {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 22pt;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: 10pt;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 3pt;
+            letter-spacing: 0.5px;
+        }
+
+        .summary {
+            font-size: 8pt;
+            color: var(--text-light);
+            max-width: 340pt;
+            line-height: 1.5;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5pt;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5pt;
+            font-size: 7pt;
+            color: var(--text-light);
+        }
+
+        .contact-item svg {
+            width: 9pt;
+            height: 9pt;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           MAIN LAYOUT
+           ======================================== */
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 200pt;
+            gap: 18pt;
+            flex: 1;
+        }
+
+        .col-main {
+            display: flex;
+            flex-direction: column;
+            gap: 14pt;
+        }
+
+        .col-side {
+            display: flex;
+            flex-direction: column;
+            gap: 10pt;
+        }
+
+        /* ========================================
+           SECTIONS (Timeline Style)
+           ======================================== */
+        .section {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 8pt;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8pt;
+            display: flex;
+            align-items: center;
+            gap: 5pt;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-title svg {
+            width: 10pt;
+            height: 10pt;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           TIMELINE ITEMS (通用的)
+           ======================================== */
+        .timeline-item {
+            margin-bottom: 10pt;
+            padding-left: 12pt;
+            border-left: 2px solid var(--accent-bg);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4pt;
+            top: 3pt;
+            width: 6pt;
+            height: 6pt;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2pt;
+        }
+
+        .item-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .item-subtitle {
+            font-size: 8pt;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .item-date {
+            font-size: 7pt;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--accent-bg);
+            padding: 2pt 6pt;
+            border-radius: 10pt;
+        }
+
+        .item-desc {
+            font-size: 7.5pt;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           PROJECTS (Timeline Style)
+           ======================================== */
+        .project-item {
+            margin-bottom: 10pt;
+            padding-left: 12pt;
+            border-left: 2px solid var(--accent-bg);
+            position: relative;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: -4pt;
+            top: 3pt;
+            width: 6pt;
+            height: 6pt;
+            background: var(--accent-light);
+            border-radius: 50%;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2pt;
+        }
+
+        .project-name {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .project-link {
+            font-size: 7pt;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-tech {
+            font-size: 7pt;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 2pt;
+        }
+
+        .project-desc {
+            font-size: 7.5pt;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* ========================================
+           SKILLS SIDEBAR
+           ======================================== */
+        .skill-group {
+            margin-bottom: 8pt;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-group-title {
+            font-size: 7pt;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4pt;
+            display: flex;
+            align-items: center;
+            gap: 4pt;
+        }
+
+        .skill-group-title svg {
+            width: 10pt;
+            height: 10pt;
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3pt;
+        }
+
+        .skill-tag {
+            font-size: 6.5pt;
+            padding: 3pt 6pt;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 4pt;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ========================================
+           SOFT SKILLS
+           ======================================== */
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4pt;
+        }
+
+        .soft-skill {
+            font-size: 7pt;
+            font-weight: 500;
+            padding: 3pt 8pt;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            border-radius: 12pt;
+        }
+
+        /* ========================================
+           LANGUAGES
+           ======================================== */
+        .lang-item {
+            display: flex;
+            align-items: center;
+            gap: 6pt;
+            margin-bottom: 5pt;
+        }
+
+        .lang-name {
+            font-size: 7.5pt;
+            font-weight: 600;
+            color: var(--text);
+            min-width: 60pt;
+        }
+
+        .lang-bar {
+            flex: 1;
+            height: 4pt;
+            background: var(--border);
+            border-radius: 2pt;
+            overflow: hidden;
+        }
+
+        .lang-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 2pt;
+        }
+
+        .lang-level {
+            font-size: 6.5pt;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 24pt;
+        }
+
+        /* ========================================
+           HOBBIES
+           ======================================== */
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5pt;
+        }
+
+        .hobby {
+            font-size: 7pt;
+            padding: 3pt 8pt;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 4pt;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 3pt;
+        }
+
+        .hobby svg {
+            width: 9pt;
+            height: 9pt;
+            color: var(--accent);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            margin-top: auto;
+            padding-top: 8pt;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 6.5pt;
+            color: var(--text-muted);
+        }
+
+        .footer-link {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ========================================
+           PRINT
+           ======================================== */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+            }
+
+            .timeline-item::before,
+            .project-item::before,
+            .section-title svg,
+            .contact-item svg,
+            .lang-fill,
+            .soft-skill {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 210mm) {
+            .page {
+                width: 100%;
+                min-width: 210mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="container">
+            <!-- HEADER -->
+            <header class="header">
+                <div class="header-left">
+                    <div class="header-top">
+                        <div class="avatar-placeholder">
+                            <span>Avatar</span>
+                        </div>
+                        <div class="name-info">
+                            <h1 class="name">Ronan Chenu</h1>
+                            <div class="title">Développeur Full-Stack JS / TS / C#</div>
+                        </div>
+                    </div>
+                    <p class="summary">Passionné d'informatique, ma curiosité et ma rigueur m'ont permis d'apprendre en
+                        autodidacte. Je consolide aujourd'hui mes compétences via une formation intensive de développeur
+                        full-stack. Orienté code maintenable, tests automatisés et bonnes pratiques (CI/CD, sécurité,
+                        architecture).</p>
+                </div>
+                <div class="header-right">
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span>Lille (59)</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <span>06 63 94 56 81</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <a href="mailto:chenu.pro@gmail.com">chenu.pro@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        <a href="https://linkedin.com/in/ronanchenu">linkedin.com/in/ronanchenu</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <a href="https://github.com/monority">github.com/monority</a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <div class="main">
+                <!-- MAIN COLUMN -->
+                <div class="col-main">
+                    <!-- PORTFOLIO -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                            Portfolio
+                        </h2>
+                        <div style="font-size: 8pt; color: var(--text-light);">
+                            <a href="https://ronanchenu.vercel.app"
+                                style="color: var(--accent); font-weight: 600;">ronanchenu.vercel.app</a>
+                        </div>
+                    </section>
+
+                    <!-- EXPERIENCES -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Expériences
+                        </h2>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Développeur web</div>
+                                    <div class="item-subtitle">LevelUp Cluster</div>
+                                </div>
+                                <span class="item-date">Avril - Juin 2023</span>
+                            </div>
+                            <div class="item-desc">React / Angular, gestion de projet, maquettage, cahier des charges
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Technicien Informatique</div>
+                                    <div class="item-subtitle">Collège Albert Debeyre (Éducation nationale)</div>
+                                </div>
+                                <span class="item-date">2020 - 2022</span>
+                            </div>
+                            <div class="item-desc">Sécurité parc info, Kwartz, Pulse (images), Gestion serveur,
+                                Maintenance Windows, gestion hardware</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Création de jeu vidéo</div>
+                                    <div class="item-subtitle">Rencontres audiovisuelles</div>
+                                </div>
+                                <span class="item-date">Jan - Avril 2017</span>
+                            </div>
+                            <div class="item-desc">Unity, C#, Assets Creation, Game design, Level design, Audacity
+                                Musique</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Développeur Unity - Testeur</div>
+                                    <div class="item-subtitle">3DDUO</div>
+                                </div>
+                                <span class="item-date">Avril - Juin 2017</span>
+                            </div>
+                            <div class="item-desc">Unity, C#, Assets Creation, Game design, Level design</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Expérience en Agriculture / Restauration</div>
+                                    <div class="item-subtitle">Serveur</div>
+                                </div>
+                                <span class="item-date">2013 - 2023</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- FORMATIONS -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 14l9-5-9-5-9 5 9 5z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            </svg>
+                            Formation
+                        </h2>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Développeur JavaScript / .NET Fullstack</div>
+                                    <div class="item-subtitle">m2i formation • Villeneuve d'Ascq</div>
+                                </div>
+                                <span class="item-date">2023 - 2025</span>
+                            </div>
+                            <div class="item-desc">C# + Framework, Azure, Docker, Projet fullstack, Framework JS,
+                                Backend Node</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Développeur web et web mobile</div>
+                                    <div class="item-subtitle">Nurserie • Euratechnologies Lille</div>
+                                </div>
+                                <span class="item-date">Fév - Mars 2023</span>
+                            </div>
+                            <div class="item-desc">HTML, CSS, JS, Collaboration Github, Projets en groupe</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Tice - Kwartz - Technicien Informatique</div>
+                                    <div class="item-subtitle">Éducation nationale</div>
+                                </div>
+                                <span class="item-date">2020 - 2022</span>
+                            </div>
+                            <div class="item-desc">Sécurité parc info, Kwartz, Pulse, Gestion serveur</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Licence sociologie et anthropologie</div>
+                                    <div class="item-subtitle">Université Lille</div>
+                                </div>
+                                <span class="item-date">2015 - 2016</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Licence Droit</div>
+                                    <div class="item-subtitle">Université Lille</div>
+                                </div>
+                                <span class="item-date">2012 - 2014</span>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="col-side">
+                    <!-- PROJETS -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
+                            Projets
+                        </h2>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <span class="project-name">Dashboard Admin</span>
+                                <a href="https://dashboard-rch.vercel.app"
+                                    class="project-link">dashboard-rch.vercel.app</a>
+                            </div>
+                            <div class="project-tech">React • TypeScript • Zustand</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <span class="project-name">Skyllswap</span>
+                                <a href="https://skyllswap.vercel.app" class="project-link">skyllswap.vercel.app</a>
+                            </div>
+                            <div class="project-tech">Node.js • Prisma • PostgreSQL</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-header">
+                                <span class="project-name">Horloges</span>
+                                <a href="https://horloges.vercel.app" class="project-link">horloges.vercel.app</a>
+                            </div>
+                            <div class="project-tech">React • Tailwind • Framer Motion</div>
+                        </div>
+                    </section>
+
+                    <!-- SOFT SKILLS -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Soft Skills
+                        </h2>
+                        <div class="soft-skills">
+                            <span class="soft-skill">Esprit d'équipe</span>
+                            <span class="soft-skill">Autonomie</span>
+                            <span class="soft-skill">Curiosité</span>
+                            <span class="soft-skill">Rigueur</span>
+                            <span class="soft-skill">Communication</span>
+                        </div>
+                    </section>
+
+                    <!-- TECHNICAL SKILLS -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                            Stack Technique
+                        </h2>
+                        <div class="skill-group">
+                            <div class="skill-group-title">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Front-end
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">Next.js</span>
+                                <span class="skill-tag">Remix</span>
+                                <span class="skill-tag">Tailwind</span>
+                                <span class="skill-tag">Zustand</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-title">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+                                </svg>
+                                Back-end
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">NestJS</span>
+                                <span class="skill-tag">Express</span>
+                                <span class="skill-tag">C# / .NET</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-title">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                </svg>
+                                Cloud & DevOps
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">CI/CD</span>
+                                <span class="skill-tag">GitHub Actions</span>
+                                <span class="skill-tag">Linux</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-title">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Tests & Qualité
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Playwright</span>
+                                <span class="skill-tag">Jest</span>
+                                <span class="skill-tag">Tests E2E</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <div class="skill-group-title">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                </svg>
+                                Outils
+                            </div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Postman</span>
+                                <span class="skill-tag">Storybook</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- LANGUAGES -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                            </svg>
+                            Langues
+                        </h2>
+                        <div class="lang-item">
+                            <span class="lang-name">Anglais</span>
+                            <div class="lang-bar">
+                                <div class="lang-fill" style="width: 100%;"></div>
+                            </div>
+                            <span class="lang-level">C2</span>
+                        </div>
+                    </section>
+
+                    <!-- HOBBIES -->
+                    <section class="section">
+                        <h2 class="section-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            Loisirs
+                        </h2>
+                        <div class="hobbies">
+                            <span class="hobby">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                                </svg>
+                                Musculation
+                            </span>
+                            <span class="hobby">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                Course
+                            </span>
+                            <span class="hobby">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                                </svg>
+                                Maps Source
+                            </span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
