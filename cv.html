@@ -98,20 +98,9 @@
         .avatar-placeholder {
             width: 50pt;
             height: 50pt;
-            background: var(--accent-bg);
-            border-radius: 8pt;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed var(--accent);
-            flex-shrink: 0;
         }
 
-        .avatar-placeholder span {
-            font-size: 7pt;
-            color: var(--accent);
-            text-align: center;
-        }
+
 
         .name-info {
             flex: 1;
@@ -184,13 +173,13 @@
         .col-main {
             display: flex;
             flex-direction: column;
-            gap: 14pt;
+            gap: 20pt;
         }
 
         .col-side {
             display: flex;
             flex-direction: column;
-            gap: 10pt;
+            gap: 20pt;
         }
 
         /* ========================================
@@ -541,7 +530,11 @@
                 <div class="header-left">
                     <div class="header-top">
                         <div class="avatar-placeholder">
-                            <span>Avatar</span>
+                            <span>
+
+                                <img src="/avatar.webp" alt="Avatar de Ronan Chenu"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8pt;">
+                            </span>
                         </div>
                         <div class="name-info">
                             <h1 class="name">Ronan Chenu</h1>
@@ -711,7 +704,7 @@
                         <div class="timeline-item">
                             <div class="item-header">
                                 <div>
-                                    <div class="item-title">Tice - Kwartz - Technicien Informatique</div>
+                                    <div class="item-title">Technicien Informatique</div>
                                     <div class="item-subtitle">Éducation nationale</div>
                                 </div>
                                 <span class="item-date">2020 - 2022</span>
@@ -790,6 +783,7 @@
                             <span class="soft-skill">Curiosité</span>
                             <span class="soft-skill">Rigueur</span>
                             <span class="soft-skill">Communication</span>
+                            <span class="soft-skill">Polyvalence</span>
                         </div>
                     </section>
 
@@ -814,7 +808,7 @@
                                 <span class="skill-tag">React</span>
                                 <span class="skill-tag">TypeScript</span>
                                 <span class="skill-tag">Next.js</span>
-                                <span class="skill-tag">Remix</span>
+                                <span class="skill-tag">Astro</span>
                                 <span class="skill-tag">Tailwind</span>
                                 <span class="skill-tag">Zustand</span>
                             </div>
@@ -829,7 +823,6 @@
                             </div>
                             <div class="skill-tags">
                                 <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">NestJS</span>
                                 <span class="skill-tag">Express</span>
                                 <span class="skill-tag">C# / .NET</span>
                                 <span class="skill-tag">GraphQL</span>
