@@ -7,7 +7,7 @@
     <title>CV - Ronan Chenu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
         /* ========================================
@@ -34,7 +34,7 @@
             --bg-alt: #f8fafc;
             --text: #1e293b;
             --text-light: #64748b;
-            --text-muted: #94a3b8;
+            --text-muted: #3a3a3a;
             --border: #e2e8f0;
             --border-light: #f1f5f9;
 
@@ -107,8 +107,8 @@
         }
 
         .name {
-            font-size: 22pt;
-            font-weight: 800;
+            font-size: 20pt;
+            font-weight: 700;
             color: var(--primary);
             letter-spacing: -0.5px;
             line-height: 1.1;
@@ -152,7 +152,7 @@
         }
 
         .contact-item a {
-            color: var(--text-light);
+            color: var(--text-muted);
             text-decoration: none;
         }
 
@@ -369,12 +369,12 @@
         }
 
         .skill-tag {
-            font-size: 6.5pt;
-            padding: 3pt 6pt;
+            font-size: 6pt;
+            padding: 2pt 5pt;
             background: var(--bg-alt);
-            border: 1px solid var(--border);
-            border-radius: 4pt;
-            color: var(--text-light);
+            border: 1px solid var(--border-light);
+            border-radius: 3pt;
+            color: var(--text-muted);
             font-weight: 500;
         }
 
@@ -388,12 +388,12 @@
         }
 
         .soft-skill {
-            font-size: 7pt;
+            font-size: 6.5pt;
             font-weight: 500;
-            padding: 3pt 8pt;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            padding: 2pt 6pt;
+            background: var(--accent);
             color: white;
-            border-radius: 12pt;
+            border-radius: 8pt;
         }
 
         /* ========================================
@@ -402,36 +402,36 @@
         .lang-item {
             display: flex;
             align-items: center;
-            gap: 6pt;
-            margin-bottom: 5pt;
+            gap: 5pt;
+            margin-bottom: 4pt;
         }
 
         .lang-name {
-            font-size: 7.5pt;
-            font-weight: 600;
+            font-size: 7pt;
+            font-weight: 500;
             color: var(--text);
-            min-width: 60pt;
+            min-width: 50pt;
         }
 
         .lang-bar {
             flex: 1;
-            height: 4pt;
-            background: var(--border);
+            height: 3pt;
+            background: var(--border-light);
             border-radius: 2pt;
             overflow: hidden;
         }
 
         .lang-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            background: var(--accent);
             border-radius: 2pt;
         }
 
         .lang-level {
-            font-size: 6.5pt;
-            font-weight: 600;
-            color: var(--accent);
-            min-width: 24pt;
+            font-size: 6pt;
+            font-weight: 500;
+            color: var(--text-muted);
+            min-width: 20pt;
         }
 
         /* ========================================
@@ -507,7 +507,8 @@
             .section-title svg,
             .contact-item svg,
             .lang-fill,
-            .soft-skill {
+            .soft-skill,
+            .skill-tag {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
