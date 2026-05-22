@@ -31,6 +31,9 @@ Passionné d'informatique, ma curiosité et ma rigueur m'ont permis d'apprendre 
 ### Outils
 - VS Code, Figma, Postman, Sentry, Storybook, ESLint, Prettier
 
+### Stack Technique AI
+- Anthropic, OpenAI, Google, Mistral AI, Meta, Cohere, DeepSeek
+
 ---
 
 ## Projets
